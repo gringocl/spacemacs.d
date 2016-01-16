@@ -242,6 +242,10 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
+  ;; Use more simple */# so we don't drop into symbol-highlight mode
+  (define-key evil-normal-state-map (kbd "*") 'evil-search-word-forward)
+  (define-key evil-normal-state-map (kbd "#") 'evil-search-word-backward)
+
   (setq-default
    ;; Enable sudo:server:
    tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:")))
