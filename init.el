@@ -53,7 +53,11 @@ values."
      spell-checking
      ranger
      version-control
+
+     ;; TheBB's layers
+     ;; https://github.com/TheBB/spacemacs-layers
      no-dots
+     evil-little-word
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
