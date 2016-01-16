@@ -238,6 +238,10 @@ layers configuration. You are free to put any user code."
    initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53))
    powerline-default-separator 'alternate)
 
+  ;; make j & k behave as g j & g k:
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
   (setq-default
    ;; Enable sudo:server:
    tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:")))
