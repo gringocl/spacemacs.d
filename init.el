@@ -295,6 +295,7 @@ layers configuration. You are free to put any user code."
    deft-use-filename-as-title nil
    deft-use-filter-string-for-filename t
    deft-directory "~/Dropbox (Substantial)/Notes")
+   (setq deft-auto-save-interval 5.0)
 
   ;; Monkey patch to fix indentation for attributes in jsx
   (load-file "~/.dotfiles/emacs/sgml-mode-patch.el")
