@@ -355,6 +355,9 @@ layers configuration. You are free to put any user code."
   ;; Start in insert mode
   (add-hook 'git-commit-mode-hook 'evil-insert-state)
 
+  ;; Enable midnight-mode to clean old buffers every day
+  '(midnight-mode t nil (midnight))
+
   ;; Smartparens
   (setq-default
    sp-highlight-pair-overlay nil
