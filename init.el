@@ -260,6 +260,9 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "#") 'evil-search-word-backward)
 
   (setq-default
+   ;; Use bash because it's faster
+   shell-file-name "/bin/bash"
+
    ;; Enable sudo:server:
    tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:")))
 
