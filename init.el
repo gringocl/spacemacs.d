@@ -302,7 +302,7 @@ layers configuration. You are free to put any user code."
    (setq deft-auto-save-interval 5.0)
 
   ;; Monkey patch to fix indentation for attributes in jsx
-  (load-file "~/.dotfiles/emacs/sgml-mode-patch.el")
+  (load-file "~/.spacemacs.d/sgml-mode-patch.el")
   (require 'sgml-mode)
 
   ;; Use C-j in place of C-x
