@@ -241,6 +241,11 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (global-evil-mc-mode)
 
+  ;; Profiler bindings
+  (spacemacs/set-leader-keys "ops" 'profiler-start)
+  (spacemacs/set-leader-keys "opr" 'profiler-report)
+  (spacemacs/set-leader-keys "opt" 'profiler-stop)
+
   ;; Set initial position
   (setq
    initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53))
