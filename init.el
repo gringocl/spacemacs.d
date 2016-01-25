@@ -244,6 +244,7 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys "ops" 'profiler-start)
   (spacemacs/set-leader-keys "opr" 'profiler-report)
   (spacemacs/set-leader-keys "opt" 'profiler-stop)
+  (spacemacs/set-leader-keys "oper" 'elp-results)
 
   ;; Set initial position
   (setq
