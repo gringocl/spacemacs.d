@@ -256,8 +256,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
   ;; Use more simple */# so we don't drop into symbol-highlight mode
-  (define-key evil-normal-state-map (kbd "*") 'evil-search-word-forward)
-  (define-key evil-normal-state-map (kbd "#") 'evil-search-word-backward)
+  (define-key evil-normal-state-map (kbd "*") 'ahs-forward)
+  (define-key evil-normal-state-map (kbd "#") 'ahs-backward)
 
   (setq-default
    ;; Use bash because it's faster
