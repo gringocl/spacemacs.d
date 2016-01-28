@@ -249,6 +249,9 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys "opt" 'profiler-stop)
   (spacemacs/set-leader-keys "oper" 'elp-results)
 
+  ;; auto-correct
+  (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
+
   ;; Set initial position
   (setq
    initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53))
