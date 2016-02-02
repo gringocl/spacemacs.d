@@ -299,6 +299,7 @@ layers configuration. You are free to put any user code."
    js2-mode-show-strict-warnings nil
    js2-basic-offset 2
    js2-strict-trailing-comma-warning nil
+   js2-strict-missing-semi-warning nil
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
