@@ -313,7 +313,8 @@ layers configuration. You are free to put any user code."
    deft-org-mode-title-prefix t
    deft-use-filename-as-title nil
    deft-use-filter-string-for-filename t
-   deft-directory "~/Dropbox (Substantial)/Notes")
+   deft-directory "~/Dropbox (Substantial)/Notes"
+   org-agenda-files '("~/Dropbox (Substantial)/Notes"))
    (setq deft-auto-save-interval 5.0)
 
   ;; Monkey patch to fix indentation for attributes in jsx
