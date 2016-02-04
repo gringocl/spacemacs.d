@@ -235,35 +235,13 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost any
 user code here.  The exception is org related code, which should be placed in
 `dotspacemacs/user-config'."
-  )
-
-(defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
-  (global-evil-mc-mode)
-
-  ;; Profiler bindings
-  (spacemacs/set-leader-keys "ops" 'profiler-start)
-  (spacemacs/set-leader-keys "opr" 'profiler-report)
-  (spacemacs/set-leader-keys "opt" 'profiler-stop)
-  (spacemacs/set-leader-keys "oper" 'elp-results)
-
-  ;; auto-correct
-  (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
-
   ;; Set initial position
   (setq
    initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53))
    powerline-default-separator 'alternate)
 
-  ;; make j & k behave as g j & g k:
-  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
-
-  ;; Use more simple */# so we don't drop into symbol-highlight mode
-  (define-key evil-normal-state-map (kbd "*") 'ahs-forward)
-  (define-key evil-normal-state-map (kbd "#") 'ahs-backward)
+  ;; auto-correct
+  (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
 
   (setq-default
    ;; Use bash because it's faster
@@ -315,28 +293,7 @@ layers configuration. You are free to put any user code."
    deft-use-filter-string-for-filename t
    deft-directory "~/Dropbox (Substantial)/Notes"
    org-agenda-files '("~/Dropbox (Substantial)/Notes"))
-   (setq deft-auto-save-interval 5.0)
-
-  ;; Monkey patch to fix indentation for attributes in jsx
-  (load-file "~/.spacemacs.d/sgml-mode-patch.el")
-  (require 'sgml-mode)
-
-  ;; Use C-j in place of C-x
-  (define-key key-translation-map "\C-j" "\C-x")
-  (global-set-key (kbd "<s-return>") 'spacemacs/toggle-fullscreen-frame)
-
-  ;; HTML
-  (with-eval-after-load 'web-mode
-    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
-
-  ;; Javascript
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
-
-  (defun set-jsx-indentation ()
-    (setq-local sgml-basic-offset js2-basic-offset))
-  (add-hook 'js2-jsx-mode-hook #'set-jsx-indentation)
+  (setq deft-auto-save-interval 5.0)
 
   ;; flycheck eslint
   (with-eval-after-load 'flycheck
@@ -358,21 +315,6 @@ layers configuration. You are free to put any user code."
   ;; Treat _ as a word character
   (with-eval-after-load 'ruby-mode
     (modify-syntax-entry ?_ "w" ruby-mode-syntax-table))
-
-  ;; Word wrap in text buffers
-  (add-hook 'text-mode-hook 'auto-fill-mode)
-
-  ;; Magit
-  ;; Use C-n/C-p to navigate sections
-  (with-eval-after-load 'magit
-    (evil-define-key 'motion magit-mode-map (kbd "C-n") 'magit-section-forward-sibling)
-    (evil-define-key 'motion magit-mode-map (kbd "C-p") 'magit-section-backward-sibling))
-
-  ;; Start in insert mode
-  (add-hook 'git-commit-mode-hook 'evil-insert-state)
-
-  ;; Enable midnight-mode to clean old buffers every day
-  '(midnight-mode t nil (midnight))
 
   ;; Smartparens
   (setq-default
@@ -400,7 +342,65 @@ layers configuration. You are free to put any user code."
     (company-flx-mode +1))
   (setq-default company-backends-js2-mode '((company-tern :with company-dabbrev)
                                             company-files
-                                            company-dabbrev)))
+                                            company-dabbrev))
+
+  ;; HTML
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
+
+  ;; Monkey patch to fix indentation for attributes in jsx
+  (load-file "~/.spacemacs.d/sgml-mode-patch.el")
+  (require 'sgml-mode)
+  )
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration. You are free to put any user code."
+  (global-evil-mc-mode)
+
+  ;; Profiler bindings
+  (spacemacs/set-leader-keys "ops" 'profiler-start)
+  (spacemacs/set-leader-keys "opr" 'profiler-report)
+  (spacemacs/set-leader-keys "opt" 'profiler-stop)
+  (spacemacs/set-leader-keys "oper" 'elp-results)
+
+  ;; make j & k behave as g j & g k:
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+  ;; Use more simple */# so we don't drop into symbol-highlight mode
+  (define-key evil-normal-state-map (kbd "*") 'ahs-forward)
+  (define-key evil-normal-state-map (kbd "#") 'ahs-backward)
+
+  ;; Use C-j in place of C-x
+  (define-key key-translation-map "\C-j" "\C-x")
+  (global-set-key (kbd "<s-return>") 'spacemacs/toggle-fullscreen-frame)
+
+  ;; Javascript
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+
+  (defun set-jsx-indentation ()
+    (setq-local sgml-basic-offset js2-basic-offset))
+  (add-hook 'js2-jsx-mode-hook #'set-jsx-indentation)
+
+  ;; Word wrap in text buffers
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+
+  ;; Magit
+  ;; Use C-n/C-p to navigate sections
+  (with-eval-after-load 'magit
+    (evil-define-key 'motion magit-mode-map (kbd "C-n") 'magit-section-forward-sibling)
+    (evil-define-key 'motion magit-mode-map (kbd "C-p") 'magit-section-backward-sibling))
+
+  ;; Start in insert mode
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
+
+  ;; Enable midnight-mode to clean old buffers every day
+  '(midnight-mode t nil (midnight))
+)
 
 
 ;; Do not write anything past this comment. This is where Emacs will
