@@ -53,6 +53,7 @@ values."
      spell-checking
      ranger
      version-control
+     rcirc
 
      ;; TheBB's layers
      ;; https://github.com/TheBB/spacemacs-layers
