@@ -235,15 +235,94 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost any
 user code here.  The exception is org related code, which should be placed in
 `dotspacemacs/user-config'."
-  ;; Set initial position
+  ;; flycheck eslint
+  (with-eval-after-load 'flycheck
+    (setq flycheck-disabled-checkers
+                  (append flycheck-disabled-checkers
+                          '(javascript-jshint)))
+
+    (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+    (setq flycheck-disabled-checkers
+                  (append flycheck-disabled-checkers
+                          '(json-jsonlist))))
+  ;; Elixir
+  ;; Treat _ as a word character
+  (with-eval-after-load 'elixir-mode
+    (modify-syntax-entry ?_ "w" elixir-mode-syntax-table))
+
+  ;; Ruby
+  ;; Treat _ as a word character
+  (with-eval-after-load 'ruby-mode
+    (modify-syntax-entry ?_ "w" ruby-mode-syntax-table))
+
+  ;; Smartparens
   (setq
-   initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53))
-   powerline-default-separator 'alternate)
+   sp-highlight-pair-overlay nil
+   sp-highlight-wrap-overlay nil
+   sp-highlight-wrap-tag-overlay nil)
+  ;; Disable smartparens highlighting
+  (with-eval-after-load 'smartparens
+    (show-smartparens-global-mode -1))
+
+  ;; Org mode
+  (with-eval-after-load 'org
+    (define-key org-mode-map (kbd "M-h") 'org-metaleft)
+    (define-key org-mode-map (kbd "M-j") 'org-metadown)
+    (define-key org-mode-map (kbd "M-k") 'org-metaup)
+    (define-key org-mode-map (kbd "M-l") 'org-metaright)
+    (define-key org-mode-map (kbd "M-H") 'org-shiftmetaleft)
+    (define-key org-mode-map (kbd "M-J") 'org-shiftmetadown)
+    (define-key org-mode-map (kbd "M-K") 'org-shiftmetaup)
+    (define-key org-mode-map (kbd "M-L") 'org-shiftmetaright))
+
+  ;; Company
+  ;; Fuzzy completion
+  (with-eval-after-load 'company
+    (company-flx-mode +1))
+  (setq company-backends-js2-mode '((company-tern :with company-dabbrev)
+                                            company-files
+                                            company-dabbrev))
+
+  ;; HTML
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
+
+  ;; Monkey patch to fix indentation for attributes in jsx
+  (load-file "~/.spacemacs.d/sgml-mode-patch.el")
+  (require 'sgml-mode)
+
+  ;; RCIRC
+  (setq rcirc-default-nick "aaronjensen")
+  (setq rcirc-default-user-name "aaronjensen")
+  (setq rcirc-default-full-name "Aaron Jensen")
+  (setq rcirc-server-alist
+        '(("irc.freenode.net"
+           :port "6667"
+           :channels ("#elixir-lang"))))
+  ;;; Keep line at margin-bottom: ...
+  (add-hook 'rcirc-mode-hook
+            (lambda ()
+              (set (make-local-variable 'scroll-conservatively) 8192)))
+  )
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration. You are free to put any user code."
+  (global-evil-mc-mode)
+
+  ;; Set initial position
+  (setq initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53)))
+
+  (setq powerline-default-separator 'alternate)
 
   ;; auto-correct
   (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
 
-  (setq-default
+  (setq
    ;; Use bash because it's faster
    shell-file-name "/bin/bash"
 
@@ -292,87 +371,8 @@ user code here.  The exception is org related code, which should be placed in
    deft-use-filename-as-title nil
    deft-use-filter-string-for-filename t
    deft-directory "~/Dropbox (Substantial)/Notes"
+   deft-auto-save-interval 5.0
    org-agenda-files '("~/Dropbox (Substantial)/Notes"))
-  (setq deft-auto-save-interval 5.0)
-
-  ;; flycheck eslint
-  (with-eval-after-load 'flycheck
-    (setq-default flycheck-disabled-checkers
-                  (append flycheck-disabled-checkers
-                          '(javascript-jshint)))
-
-    (flycheck-add-mode 'javascript-eslint 'web-mode)
-
-    (setq-default flycheck-disabled-checkers
-                  (append flycheck-disabled-checkers
-                          '(json-jsonlist))))
-  ;; Elixir
-  ;; Treat _ as a word character
-  (with-eval-after-load 'elixir-mode
-    (modify-syntax-entry ?_ "w" elixir-mode-syntax-table))
-
-  ;; Ruby
-  ;; Treat _ as a word character
-  (with-eval-after-load 'ruby-mode
-    (modify-syntax-entry ?_ "w" ruby-mode-syntax-table))
-
-  ;; Smartparens
-  (setq-default
-   sp-highlight-pair-overlay nil
-   sp-highlight-wrap-overlay nil
-   sp-highlight-wrap-tag-overlay nil)
-  ;; Disable smartparens highlighting
-  (with-eval-after-load 'smartparens
-    (show-smartparens-global-mode -1))
-
-  ;; Org mode
-  (with-eval-after-load 'org
-    (define-key org-mode-map (kbd "M-h") 'org-metaleft)
-    (define-key org-mode-map (kbd "M-j") 'org-metadown)
-    (define-key org-mode-map (kbd "M-k") 'org-metaup)
-    (define-key org-mode-map (kbd "M-l") 'org-metaright)
-    (define-key org-mode-map (kbd "M-H") 'org-shiftmetaleft)
-    (define-key org-mode-map (kbd "M-J") 'org-shiftmetadown)
-    (define-key org-mode-map (kbd "M-K") 'org-shiftmetaup)
-    (define-key org-mode-map (kbd "M-L") 'org-shiftmetaright))
-
-  ;; Company
-  ;; Fuzzy completion
-  (with-eval-after-load 'company
-    (company-flx-mode +1))
-  (setq-default company-backends-js2-mode '((company-tern :with company-dabbrev)
-                                            company-files
-                                            company-dabbrev))
-
-  ;; HTML
-  (with-eval-after-load 'web-mode
-    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
-
-  ;; Monkey patch to fix indentation for attributes in jsx
-  (load-file "~/.spacemacs.d/sgml-mode-patch.el")
-  (require 'sgml-mode)
-
-  ;; RCIRC
-  (setq rcirc-default-nick "aaronjensen")
-  (setq rcirc-default-user-name "aaronjensen")
-  (setq rcirc-default-full-name "Aaron Jensen")
-  (setq rcirc-server-alist
-        '(("irc.freenode.net"
-           :port "6667"
-           :channels ("#elixir-lang"))))
-  ;;; Keep line at margin-bottom: ...
-  (add-hook 'rcirc-mode-hook
-            (lambda ()
-              (set (make-local-variable 'scroll-conservatively) 8192)))
-  )
-
-(defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
-  (global-evil-mc-mode)
 
   ;; Profiler bindings
   (spacemacs/set-leader-keys "ops" 'profiler-start)
@@ -414,7 +414,6 @@ layers configuration. You are free to put any user code."
   ;; Enable midnight-mode to clean old buffers every day
   '(midnight-mode t nil (midnight))
 )
-
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
