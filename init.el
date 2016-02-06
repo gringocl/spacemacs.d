@@ -353,6 +353,19 @@ user code here.  The exception is org related code, which should be placed in
   ;; Monkey patch to fix indentation for attributes in jsx
   (load-file "~/.spacemacs.d/sgml-mode-patch.el")
   (require 'sgml-mode)
+
+  ;; RCIRC
+  (setq rcirc-default-nick "aaronjensen")
+  (setq rcirc-default-user-name "aaronjensen")
+  (setq rcirc-default-full-name "Aaron Jensen")
+  (setq rcirc-server-alist
+        '(("irc.freenode.net"
+           :port "6667"
+           :channels ("#elixir-lang"))))
+  ;;; Keep line at margin-bottom: ...
+  (add-hook 'rcirc-mode-hook
+            (lambda ()
+              (set (make-local-variable 'scroll-conservatively) 8192)))
   )
 
 (defun dotspacemacs/user-config ()
