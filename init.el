@@ -299,13 +299,6 @@ user code here.  The exception is org related code, which should be placed in
   (require 'sgml-mode)
 
   ;; RCIRC
-  (setq rcirc-default-nick "aaronjensen")
-  (setq rcirc-default-user-name "aaronjensen")
-  (setq rcirc-default-full-name "Aaron Jensen")
-  (setq rcirc-server-alist
-        '(("irc.freenode.net"
-           :port "6667"
-           :channels ("#elixir-lang"))))
   ;;; Keep line at margin-bottom: ...
   (add-hook 'rcirc-mode-hook
             (lambda ()
@@ -417,7 +410,11 @@ layers configuration. You are free to put any user code."
 
   ;; Enable midnight-mode to clean old buffers every day
   '(midnight-mode t nil (midnight))
-)
+
+  ;; load private settings
+  (when (file-exists-p "~/.emacs-private.el")
+    (load-file "~/.emacs-private.el"))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
