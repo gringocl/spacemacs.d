@@ -60,6 +60,10 @@ values."
      no-dots
      evil-little-word
 
+     ;; justbur's layers
+     ;; https://github.com/justbur/spacemacs-layers
+     jb-lispy
+
      ;; Personal layers
      auto-correct
      )
