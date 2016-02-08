@@ -314,7 +314,8 @@ layers configuration. You are free to put any user code."
   ;; Set initial position
   (setq initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53)))
 
-  (setq powerline-default-separator 'alternate)
+  (spacemacs|do-after-display-system-init
+   (setq powerline-default-separator 'alternate))
 
   ;; auto-correct
   (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
