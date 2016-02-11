@@ -269,17 +269,6 @@ user code here.  The exception is org related code, which should be placed in
   (with-eval-after-load 'smartparens
     (show-smartparens-global-mode -1))
 
-  ;; Org mode
-  (with-eval-after-load 'org
-    (define-key org-mode-map (kbd "M-h") 'org-metaleft)
-    (define-key org-mode-map (kbd "M-j") 'org-metadown)
-    (define-key org-mode-map (kbd "M-k") 'org-metaup)
-    (define-key org-mode-map (kbd "M-l") 'org-metaright)
-    (define-key org-mode-map (kbd "M-H") 'org-shiftmetaleft)
-    (define-key org-mode-map (kbd "M-J") 'org-shiftmetadown)
-    (define-key org-mode-map (kbd "M-K") 'org-shiftmetaup)
-    (define-key org-mode-map (kbd "M-L") 'org-shiftmetaright))
-
   ;; Company
   ;; Fuzzy completion
   (with-eval-after-load 'company
@@ -319,6 +308,17 @@ layers configuration. You are free to put any user code."
 
   ;; auto-correct
   (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
+
+  ;; Org mode
+  (with-eval-after-load 'org
+    (define-key org-mode-map (kbd "M-h") 'org-metaleft)
+    (define-key org-mode-map (kbd "M-j") 'org-metadown)
+    (define-key org-mode-map (kbd "M-k") 'org-metaup)
+    (define-key org-mode-map (kbd "M-l") 'org-metaright)
+    (define-key org-mode-map (kbd "M-H") 'org-shiftmetaleft)
+    (define-key org-mode-map (kbd "M-J") 'org-shiftmetadown)
+    (define-key org-mode-map (kbd "M-K") 'org-shiftmetaup)
+    (define-key org-mode-map (kbd "M-L") 'org-shiftmetaright))
 
   (setq
    ;; Use bash because it's faster
