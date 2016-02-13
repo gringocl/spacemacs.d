@@ -49,7 +49,6 @@ values."
      floobits
      ruby
      semantic
-     unimpaired
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-height 30
