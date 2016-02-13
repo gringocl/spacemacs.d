@@ -5,7 +5,6 @@
         (frame-geometry-top (frame-parameter (selected-frame) 'top))
         (frame-geometry-width (frame-parameter (selected-frame) 'width))
         (frame-geometry-height (frame-parameter (selected-frame) 'height))
-        (frame-geometry-file (expand-file-name "~/.emacs.d/frame-geometry"))
         )
 
     (when (not (number-or-marker-p frame-geometry-left))
@@ -33,6 +32,5 @@
 (defun frame-geometry//load ()
   "Loads ~/.emacs.d/frame-geometry which should load the previous frame's
 geometry."
-  (let ((frame-geometry-file (expand-file-name "~/.emacs.d/frame-geometry")))
-    (when (file-readable-p frame-geometry-file)
-      (load-file frame-geometry-file))))
+  (when (file-readable-p frame-geometry-file)
+    (load-file frame-geometry-file)))
