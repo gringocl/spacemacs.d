@@ -28,6 +28,8 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      better-defaults
+     spacemacs-layouts
+     spacemacs-helm
      emacs-lisp
      markdown
      syntax-checking
@@ -39,7 +41,6 @@ values."
      html
      org
      colors
-     spacemacs-layouts
      osx
      ;; vinegar
      github
