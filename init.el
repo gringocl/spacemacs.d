@@ -66,6 +66,7 @@ values."
 
      ;; Personal layers
      auto-correct
+     frame-geometry
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -299,9 +300,6 @@ user code here.  The exception is org related code, which should be placed in
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (global-evil-mc-mode)
-
-  ;; Set initial position
-  (setq initial-frame-alist '((top . 0) (left . 0) (width . 177) (height . 53)))
 
   (spacemacs|do-after-display-system-init
    (setq powerline-default-separator 'alternate))
