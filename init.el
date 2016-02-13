@@ -256,6 +256,7 @@ user code here.  The exception is org related code, which should be placed in
   ;; Treat _ as a word character
   (with-eval-after-load 'elixir-mode
     (modify-syntax-entry ?_ "w" elixir-mode-syntax-table))
+  (setq alchemist-test-ask-about-save nil)
 
   ;; Ruby
   ;; Treat _ as a word character
