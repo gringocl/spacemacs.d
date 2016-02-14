@@ -91,8 +91,6 @@ values."
    ;; the list `dotspacemacs-configuration-layers'. (default t)
    dotspacemacs-delete-orphan-packages t))
 
-(defun dotspacemacs/config ()
-  (add-hook 'alchemist-mode-hook 'company-mode))
 (defun dotspacemacs/init ()
   "Initialization function.
 This function is called at the very startup of Spacemacs initialization
