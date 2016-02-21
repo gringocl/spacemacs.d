@@ -25,6 +25,10 @@
 
 (define-abbrev-table 'bibtex-mode-abbrev-table '())
 
+(define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
+
+(define-abbrev-table 'bookmark-edit-annotation-mode-abbrev-table '())
+
 (define-abbrev-table 'c++-mode-abbrev-table
   '(
    ))
@@ -41,6 +45,20 @@
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
 
+(define-abbrev-table 'conf-colon-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-javaprop-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-ppd-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-space-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-unix-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-windows-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
+
 (define-abbrev-table 'css-mode-abbrev-table '())
 
 (define-abbrev-table 'data-debug-mode-abbrev-table '())
@@ -55,6 +73,8 @@
 
 (define-abbrev-table 'eieio-custom-mode-abbrev-table '())
 
+(define-abbrev-table 'elisp-byte-code-mode-abbrev-table '())
+
 (define-abbrev-table 'elixir-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
@@ -66,6 +86,8 @@
 (define-abbrev-table 'ert-simple-view-mode-abbrev-table '())
 
 (define-abbrev-table 'evil-command-window-mode-abbrev-table '())
+
+(define-abbrev-table 'evil-list-view-mode-abbrev-table '())
 
 (define-abbrev-table 'flycheck-error-list-mode-abbrev-table '())
 
@@ -82,14 +104,18 @@
     ("entirley" "entirely" nil 0)
     ("lyaer" "layer" nil 0)
     ("mispelling" "misspelling" nil 0)
-    ("teh" "the" nil 1)
     ("oepn" "open" nil 0)
     ("siwtch" "switch" nil 0)
+    ("teh" "the" nil 1)
    ))
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
 (define-abbrev-table 'haml-mode-abbrev-table '())
+
+(define-abbrev-table 'helm-grep-mode-abbrev-table '())
+
+(define-abbrev-table 'helm-moccur-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
@@ -99,6 +125,10 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
+(define-abbrev-table 'image-dired-display-image-mode-abbrev-table '())
+
+(define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())
+
 (define-abbrev-table 'ivy-occur-grep-mode-abbrev-table '())
 
 (define-abbrev-table 'ivy-occur-mode-abbrev-table '())
@@ -106,6 +136,8 @@
 (define-abbrev-table 'java-mode-abbrev-table
   '(
    ))
+
+(define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -217,5 +249,9 @@
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
 
+(define-abbrev-table 'vc-git-region-history-mode-abbrev-table '())
+
 (define-abbrev-table 'web-mode-abbrev-table '())
+
+(define-abbrev-table 'xref--xref-buffer-mode-abbrev-table '())
 

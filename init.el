@@ -347,6 +347,8 @@ layers configuration. You are free to put any user code."
 
   ;; auto-correct
   (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
+  (if (file-exists-p abbrev-file-name)
+      (quietly-read-abbrev-file))
 
   ;; Org mode
   (with-eval-after-load 'org
