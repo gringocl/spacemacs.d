@@ -33,7 +33,8 @@ values."
      emacs-lisp
      markdown
      syntax-checking
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t)
      erlang
      elixir
      git
