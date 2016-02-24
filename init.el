@@ -457,11 +457,23 @@ layers configuration. You are free to put any user code."
   ;; Enable midnight-mode to clean old buffers every day
   '(midnight-mode t nil (midnight))
 
+  (add-hook 'js-mode-hook 'eslint-set-closest-executable)
+
   ;; load private settings
   (when (file-exists-p "~/.emacs-private.el")
     (load-file "~/.emacs-private.el"))
   )
 
+(defun eslint-set-closest-executable (&optional dir)
+  (interactive)
+  (let* ((dir (or dir default-directory))
+         (eslint-executable (concat dir "/node_modules/.bin/eslint")))
+    (if (file-exists-p eslint-executable)
+        (progn
+          (make-variable-buffer-local 'flycheck-javascript-eslint-executable)
+          (setq flycheck-javascript-eslint-executable eslint-executable))
+      (if (string= dir "/") nil
+        (eslint-set-closest-executable (expand-file-name ".." dir))))))
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-faces
