@@ -163,7 +163,7 @@ values."
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
    ;; (default "SPC")
-   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-emacs-command-key ":"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -413,6 +413,9 @@ layers configuration. You are free to put any user code."
    deft-directory "~/Dropbox (Substantial)/Notes"
    deft-auto-save-interval 5.0
    org-agenda-files '("~/Dropbox (Substantial)/Notes"))
+
+  (spacemacs/set-leader-keys "SPC" 'avy-goto-char-timer)
+  (setq avy-timeout-seconds 0.2)
 
   ;; Profiler bindings
   (spacemacs/set-leader-keys "ops" 'profiler-start)
