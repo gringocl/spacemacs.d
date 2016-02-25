@@ -61,7 +61,7 @@ values."
 
      ;; TheBB's layers
      ;; https://github.com/TheBB/spacemacs-layers
-     no-dots
+     ;; no-dots
      evil-little-word
 
      ;; justbur's layers
