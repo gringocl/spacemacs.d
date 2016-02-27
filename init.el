@@ -436,7 +436,7 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "#") 'ahs-backward)
 
   ;; Use C-j in place of C-x
-  (define-key key-translation-map "\C-j" "\C-x")
+  ;; (define-key key-translation-map "\C-j" "\C-x")
   (global-set-key (kbd "<s-return>") 'spacemacs/toggle-fullscreen-frame)
 
   ;; Javascript
