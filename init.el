@@ -347,7 +347,7 @@ layers configuration. You are free to put any user code."
    (setq powerline-default-separator 'alternate))
 
   (setq flycheck-global-modes
-        (append flycheck-global-modes '(js2-jsx-mode)))
+        (append flycheck-global-modes 'js2-jsx-mode))
 
   ;; auto-correct
   (setq abbrev-file-name "~/.spacemacs.d/abbrev_defs")
